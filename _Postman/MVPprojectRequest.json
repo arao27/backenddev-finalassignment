@@ -1,0 +1,33 @@
+{
+  "info": {
+    "_postman_id": "49930632-eafab093-191c-4daf-8b73-190ca3ebde73",
+    "name": "MVPprojectRequest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "MVPprojectRequest",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/prs/3/percentiles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["prs", "3", "percentiles"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "code": 200,
+          "body": "[{\"pr_id\":3,\"exercise_id\":1,\"weight\":110,\"reps\":1,\"date_recorded\":\"2025-12-07T09:26:01.209Z\",\"percentile_general\":29,\"percentile_lifters\":30}]"
+        }
+      ]
+    }
+  ]
+}
