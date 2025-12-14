@@ -1,0 +1,148 @@
+{
+  "info": {
+    "name": "PR Tracker API",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-1234567890ef",
+    "description": "Postman collection for Fitness PR Tracker API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"User One\",\n  \"email\": \"user1@example.com\",\n  \"password\": \"userpass\",\n  \"gender\": \"male\",\n  \"weight_class\": \"70kg\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["auth","register"]
+        }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user1@example.com\",\n  \"password\": \"userpass\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["auth","login"]
+        }
+      }
+    },
+    {
+      "name": "Get User Profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/auth/profile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["auth","profile"]
+        }
+      }
+    },
+    {
+      "name": "Create PR",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"exercise_id\": 1,\n  \"weight\": 100,\n  \"reps\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/prs",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["prs"]
+        }
+      }
+    },
+    {
+      "name": "Get User PRs",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/prs/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["prs","1"]
+        }
+      }
+    },
+    {
+      "name": "Get PR Percentiles",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/prs/1/percentiles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["prs","1","percentiles"]
+        }
+      }
+    },
+    {
+      "name": "Get All Exercises",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/exercises",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["exercises"]
+        }
+      }
+    },
+    {
+      "name": "Get All Users (Admin)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/auth",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "token", "value": "" },
+    { "key": "adminToken", "value": "" }
+  ]
+}

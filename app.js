@@ -1,24 +1,21 @@
 const express = require('express');
-const { testConnection } = require('./database');
-const logger = require('./middleware/logger');
-const errorHandler = require('./middleware/errorHandler');
-
-const userRoutes = require('./routes/users');
-const exerciseRoutes = require('./routes/exercises');
-const prRoutes = require('./routes/prs');
-
 const app = express();
-app.use(express.json());
-app.use(logger);
-
-app.use('/users', userRoutes);
-app.use('/exercises', exerciseRoutes);
-app.use('/prs', prRoutes);
-
-app.use(errorHandler);
-
+require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
-testConnection();
+app.use(express.json());
 
-app.listen(PORT, () => console.log('Server running on port ${PORT}'));
+// Routes
+app.use('/prs', require('./routes/prs'));
+app.use('/auth', require('./routes/auth'));
+app.use('/exercises', require('./routes/exercises'));
+
+// Error handler
+app.use(require('./middleware/errorHandler'));
+
+// Start server
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+module.exports = app;
